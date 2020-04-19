@@ -1,0 +1,14 @@
+name: TS
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Print Hello-World  # ステップの名前を指定する
+      env:                     # 環境変数を指定できます
+        PRINT: Hello-World
+      run: |
+        echo $PRINT
