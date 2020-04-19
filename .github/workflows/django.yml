@@ -7,10 +7,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v1
-      with: # shimataro/ssh-key-actionに渡すパラメーター
-        private-key: ${{ secrets.SSH_KEY }} # 必須
-        public-key: ${{ secrets.SSH_KEY_PUB }} # 必須
-    - name: SSH  # ステップの名前を指定する
-      run: pwd
+    - name: ssh key passphrase
+      uses: appleboy/ssh-action@master
+      with: 
+        host: ${{ secrets.HOME_ADDRESS}}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script_stop: true
+        passphrase: ${{ secrets.PASS }}
+        script: |
+          cd ${{ secrets.REPO_DIR}}
+          git pull
