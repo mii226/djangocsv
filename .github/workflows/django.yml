@@ -15,6 +15,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: 22
         script_stop: true
+        password: ${{ secrets.PASS }}
         passphrase: ${{ secrets.PASS }}
         script: |
           cd ${{ secrets.REPO_DIR}}
