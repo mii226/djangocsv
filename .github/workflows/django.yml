@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Install SSH key
@@ -13,4 +13,4 @@ jobs:
         private-key: ${{ secrets.SSH_KEY }} # 必須
         public-key: ${{ secrets.SSH_KEY_PUB }} # 必須
     - name: SSH  # ステップの名前を指定する
-          run: pwd
+      run: pwd
