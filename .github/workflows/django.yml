@@ -18,4 +18,5 @@ jobs:
         passphrase: ${{ secrets.PASS }}
         script: |
           cd ${{ secrets.REPO_DIR}}
-          git pull
+          pwd
+          git pull origin master
