@@ -5,10 +5,13 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-    - name: Print Hello-World  # ステップの名前を指定する
-      env:                     # 環境変数を指定できます
-        PRINT: Hello-World
-      run: |
-        echo $PRINT
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v1
+      with: # shimataro/ssh-key-actionに渡すパラメーター
+        private-key: ${{ secrets.SSH_KEY }} # 必須
+        public-key: ${{ secrets.SSH_KEY_PUB }} # 必須
+    - name: SSH  # ステップの名前を指定する
+          run: |
+            pwd
