@@ -16,7 +16,5 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script_stop: true
         script: |
-          dir
           cd Downloads
-          dir
           git clone ${{ secrets.REPO_URL }}
