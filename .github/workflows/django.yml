@@ -16,4 +16,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script_stop: true
         script: |
-          ls -la
+          dir
