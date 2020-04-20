@@ -17,5 +17,6 @@ jobs:
         script_stop: true
         script: |
           cd ${{ secrets.REPO_DIR}}
+          dir
           git clone ${{ secrets.REPO_URL}}
           md testActions
