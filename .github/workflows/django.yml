@@ -18,4 +18,4 @@ jobs:
         script: |
           cd ${{ secrets.REPO_DIR}}
           pwd
-          git pull origin master
+          git clone ${{ secrets.REPO_URL}}
