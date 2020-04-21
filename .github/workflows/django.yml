@@ -1,10 +1,8 @@
 name: deploy gaifaa
 
 on:
-  push:
-    branches:
-      - master
-
+  pull_request:
+    
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,8 +12,8 @@ jobs:
       with: 
         host: ${{ secrets.HOME_ADDRESS}}
         username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
         port: 22
-        password: ${{ secrets.PASSWORD }}
         script_stop: true
         script: |
-          cd Downloads\djangocsv&git pull origin master&iisreset /restart
+          dir
