@@ -18,4 +18,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script_stop: true
         script: |
-          cd Downloads&git pull origin master&iisreset /restart
+          cd Downloads\djangocsv&git pull origin master&iisreset /restart
