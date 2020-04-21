@@ -12,7 +12,7 @@ jobs:
       with: 
         host: ${{ secrets.HOME_ADDRESS}}
         username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
+        password: ${{ secrets.PASS }}
         port: 22
         script_stop: true
         script: |
