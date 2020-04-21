@@ -1,14 +1,21 @@
-name: TS
+name: deploy gaifaa
 
 on:
-  pull_request:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
-    runs-on: windows-latest
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-    - name: Print Hello-World  # ステップの名前を指定する
-      env:                     # 環境変数を指定できます
-        PRINT: Hello-World
-      run: |
-        echo $PRINT
+    - name: Deploy Server
+      uses: appleboy/ssh-action@master
+      with: 
+        host: ${{ secrets.HOME_ADDRESS}}
+        username: ${{ secrets.USER }}
+        port: 22
+        password: ${{ secrets.PASSWORD }}
+        script_stop: true
+        script: |
+          cd Downloads&git pull origin master&iisreset /restart
