@@ -1,10 +1,8 @@
 name: deploy gaifaa
 
 on:
-  push:
-    branches:
-      - master
-
+  pull_request:
+    
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,9 +11,9 @@ jobs:
       uses: appleboy/ssh-action@master
       with: 
         host: ${{ secrets.HOME_ADDRESS}}
-        username: ${{ secrets.USER }}
-        port: 22
         password: ${{ secrets.PASSWORD }}
+        port: 22
+        username: ${{ secrets.USER }}
         script_stop: true
         script: |
-          cd Downloads\djangocsv&git pull origin master&iisreset /restart
+          dir
