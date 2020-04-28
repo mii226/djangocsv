@@ -1,19 +1,23 @@
 name: deploy gaifaa
 
 on:
-  pull_request:
-    
+  push:
+    branches:
+      - master
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy Server
+    - name: Deploy
       uses: appleboy/ssh-action@master
       with: 
-        host: ${{ secrets.HOME_ADDRESS}}
+        host: ${{ secrets.HOST}}
         username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
-        port: 22
+        port: ${{ secrets.SSH_PORT}}
+        password: ${{ secrets.PASSWORD }}
         script_stop: true
         script: |
-          dir
+          cd ${{ secrets.DEPLOY_PATH }}
+          git pull origin master
+          iisreset /restart
