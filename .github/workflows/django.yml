@@ -18,4 +18,6 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script_stop: true
         script: |
-          cd ${{ secrets.DEPLOY_PATH }}&echo BBBBB&echo CCCCC
+          echo AAAAA
+          echo BBBBB
+          echo CCCCC
